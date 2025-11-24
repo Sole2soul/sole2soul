@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sole2Soul - Enriching Lives, One Soul at a Time</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #F5EAC3; }
+        nav { position: fixed; top: 0; width: 100%; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 1000; padding: 1rem 2rem; }
+        nav .container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo img { height: 80px; }
+        nav ul { list-style: none; display: flex; gap: 2rem; }
+        nav a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #FF8C42; }
+        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://user-gen-media-assets.s3.amazonaws.com/seedream_images/4e9a9e25-da46-4cf2-a5e8-564910ee1077.png'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: white; margin-top: 90px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.5rem; margin-bottom: 2rem; }
+        .btn { display: inline-block; padding: 1rem 2rem; background: #FF8C42; color: white; text-decoration: none; border-radius: 5px; margin: 0.5rem; transition: background 0.3s; border: none; cursor: pointer; font-size: 1rem; }
+        .btn:hover { background: #FF6B35; }
+        section { padding: 4rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: #FF8C42; }
+        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .founder-content { display: flex; align-items: center; gap: 3rem; margin-top: 2rem; background: white; padding: 2rem; border-radius: 10px; }
+        .founder-photo { flex-shrink: 0; }
+        .founder-photo img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 5px solid #FF8C42; }
+        .founder-text p { font-size: 1.1rem; line-height: 1.8; }
+        .founder-caption { text-align: center; margin-top: 1rem; font-weight: bold; color: #555; }
+        .mission-text { text-align: center; font-size: 1.2rem; max-width: 800px; margin: 2rem auto; line-height: 1.8; background: white; padding: 2rem; border-radius: 10px; }
+        .pets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .pet-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .pet-card:hover { transform: translateY(-5px); }
+        .pet-card img { width: 100%; height: 250px; object-fit: cover; }
+        .pet-info { padding: 1.5rem; }
+        .pet-info h3 { color: #FF8C42; margin-bottom: 0.5rem; }
+        .pet-details { color: #666; margin-bottom: 1rem; }
+        .teams-section { background: white; padding: 2rem 2rem !important; }
+        .teams-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 2rem; }
+        .team-dept-card { background: #F5EAC3; padding: 1rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .team-dept-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .leadership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .leader-card { text-align: center; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .leader-card img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid #FF8C42; margin-bottom: 1rem; }
+        .members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .member-card { text-align: center; background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .member-card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #FF8C42; margin-bottom: 1rem; }
+        .member-role { font-size: 0.9rem; color: #666; }
+        .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .help-card { background: white; padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .help-card:hover { transform: translateY(-5px); }
+        .help-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .help-card h3 { color: #FF8C42; margin-bottom: 1rem; }
+        .help-card p { color: #666; line-height: 1.8; margin-bottom: 1.5rem; }
+        .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 1rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 5px; }
+        .contact-info { background: white; padding: 2rem; border-radius: 10px; }
+        .contact-info p { margin-bottom: 1rem; }
+        .contact-info a { color: #FF8C42; text-decoration: none; }
+        footer { background: #333; color: white; text-align: center; padding: 2rem; }
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .founder-content { flex-direction: column; text-align: center; }
+            .contact-content { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/841f3247-f493-4f85-a8cf-e230ea0ca556.png" alt="Sole2Soul Logo">
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#mission">Mission</a></li>
+                <li><a href="#adopt">Adopt</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#help">Help</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div>
+            <h1>Sole2Soul</h1>
+            <p>Enriching Lives, One Soul at a Time</p>
+            <a href="#contact" class="btn">Get Involved</a>
+            <a href="#contact" class="btn">Donate Now</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>Our Story</h2>
+            <div class="founder-content">
+                <div class="founder-photo">
+                    <img src="images/founder-xia.jpg" alt="Xia Anwar">
+                    <p class="founder-caption">Xia Anwar - Founder</p>
+                </div>
+                <div class="founder-text">
+                    <p>I first envisioned Sole2Soul from a place of immense gratitude and a burning desire to give back. For me, the most fulfilling aspect of this work is the opportunity to uplift smiles and contribute to the well-being of others. It is a feeling that resonates deeply within me, seeing someone's face light up and knowing that we have made a difference, however small. This personal joy is at the heart of everything we strive to achieve here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mission">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <p class="mission-text">At Sole2Soul, our aim is to enrich the lives of those in need by championing the values of compassion, dignity, and hope. We strive to touch hearts and transform lives, fostering a profound sense of connection and belonging. Through unwavering dedication, we seek to bridge the gaps in humanity, creating a ripple effect of kindness that inspires change and uplifts souls.</p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PETS FOR ADOPTION SECTION
+         ============================================
+         TO ADD A NEW PET:
+         1. Copy one entire <div class="pet-card">...</div> block below
+         2. Paste it above or below existing pets
+         3. Update the image URL, name, breed, age, gender, and description
+         4. Update the button text to match the pet name
+         
+         TO REMOVE A PET:
+         1. Delete the entire <div class="pet-card">...</div> block for that pet
+         
+         TO UPDATE A PET:
+         1. Find the pet's card below
+         2. Change the image URL, details, or description as needed
+    ============================================ -->
+    <section id="adopt" style="background: white;">
+        <div class="container">
+            <h2>Pets Available for Adoption</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #666;">Give a loving home to these beautiful souls</p>
+            <div class="pets-grid">
+                
+                <!-- PET 1: Vanilla -->
+                <div class="pet-card">
+                    <img src="images\Vanilla.jpg" alt="Vanilla">
+                    <div class="pet-info">
+                        <h3>Vanilla</h3>
+                        <p class="pet-details"><strong>Breed:</strong> Mixed Breed Dog<br><strong>Age:</strong> 2 years | <strong>Gender:</strong> Male</p>
+                        <p>Foxy is a friendly and energetic companion who loves playing fetch and going on long walks. He's great with children and other pets. Fully vaccinated and ready for his forever home.</p>
+                        <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Adopt Foxy</button>
+                    </div>
+                 </div>
+                
+                <!-- PET 2: Foxy -->
+                <div class="pet-card">
+                    <img src="images\foxy.jpg" alt="Foxy">
+                    <div class="pet-info">
+                        <h3>Foxy</h3>
+                        <p class="pet-details"><strong>Breed:</strong> Mixed Breed Dog<br><strong>Age:</strong> 2 years | <strong>Gender:</strong> Male</p>
+                        <p>Foxy is a friendly and energetic companion who loves playing fetch and going on long walks. He's great with children and other pets. Fully vaccinated and ready for his forever home.</p>
+                        <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Adopt Foxy</button>
+                    </div>
+                 </div>
+
+                <!-- PET 3: Clove -->
+                 <div class="pet-card">
+                    <div class="clove-gallery">
+                    <img src="images/clove.jpg" alt="Clove">
+                    <img src="images/clove 1.jpg" alt="Clove looking playful">
+                    <video width="100%" height="220" controls style="border-radius:10px; background:#eee; margin-top:10px;">
+  <source src="images/clove-video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+                </div>
+                 <div class="pet-info">
+            <h3>Clove</h3>
+                        <p class="pet-details"><strong>Breed:</strong> Persian<br><strong>Age:</strong> 1 year | <strong>Gender:</strong> Female</p>
+                        <p>Clove is a gentle and affectionate cat who enjoys cuddles and quiet afternoons. She's litter trained and gets along well with other cats. Perfect for apartment living.</p>
+                        <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Adopt Clove</button>
+                    </div>
+                </div>
+
+
+                <!-- PET 4: Oliver -->
+                <div class="pet-card">
+                    <img src="images\oliver.jpg" alt="Oliver">
+                    <div class="pet-info">
+                        <h3>Oliver</h3>
+                        <p class="pet-details"><strong>Breed:</strong> Domestic Short Hair<br><strong>Age:</strong> 1.6 years | <strong>Gender:</strong> Male</p>
+                        <p>Oliver is a playful and curious puppy and is calm and friendly. He's eager to learn and would thrive with an active family she is litter trained as well. Vaccinated and neutered.</p>
+                        <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Adopt Oliver</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="teams-section">
+        <div class="container">
+            <h2>Our Teams</h2>
+            <div class="teams-grid">
+                <div class="team-dept-card"><div class="icon">💬</div><h4>Communications</h4></div>
+                <div class="team-dept-card"><div class="icon">📢</div><h4>Marketing</h4></div>
+                <div class="team-dept-card"><div class="icon">🎨</div><h4>Editing and Design</h4></div>
+                <div class="team-dept-card"><div class="icon">👥</div><h4>HR and Supervising</h4></div>
+                <div class="team-dept-card"><div class="icon">🎉</div><h4>Fundraising and Event Management</h4></div>
+                <div class="team-dept-card"><div class="icon">💰</div><h4>Finance</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         LEADERSHIP TEAM SECTION
+         ============================================
+         TO ADD A NEW LEADER:
+         1. Copy one entire <div class="leader-card">...</div> block below
+         2. Paste it with the other leaders
+         3. Update the image path (images/name.jpg), name, and role
+         
+         TO REMOVE A LEADER:
+         1. Delete the entire <div class="leader-card">...</div> block
+         
+         TO UPDATE A LEADER:
+         1. Find their card below
+         2. Change the image path, name, or role
+    ============================================ -->
+    <section id="team">
+        <div class="container">
+            <h2>Meet Our Leadership</h2>
+            <div class="leadership-grid">
+                
+                <!-- LEADER 1: John -->
+                <div class="leader-card">
+                    <img src="images/john.jpg" alt="John Cheruvathur">
+                    <h3>John Cheruvathur</h3>
+                    <p>Head of Communication</p>
+                </div>
+
+                <!-- LEADER 2: Hardhik -->
+                <div class="leader-card">
+                    <img src="images/hardhik.jpg" alt="Hardhik Kumar Shivam">
+                    <h3>Hardhik Kumar Shivam</h3>
+                    <p>Head of HR</p>
+                </div>
+
+                <!-- LEADER 3: Aashvi -->
+                <div class="leader-card">
+                    <img src="images/aashvi.jpg" alt="Aashvi">
+                    <h3>Aashvi</h3>
+                    <p>Head of Marketing</p>
+                </div>
+
+                <!-- LEADER 4: Tanishka -->
+                <div class="leader-card">
+                    <img src="images/tanisha.jpg" alt="Tanishka K">
+                    <h3>Tanishka K</h3>
+                    <p>Head of Editing and Design</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TEAM MEMBERS SECTION
+         ============================================
+         TO ADD A NEW MEMBER:
+         1. Copy one entire <div class="member-card">...</div> block below
+         2. Paste it with the other members
+         3. Update the image path (images/name.jpg), name, and roles
+         
+         TO REMOVE A MEMBER:
+         1. Delete the entire <div class="member-card">...</div> block
+         
+         TO UPDATE A MEMBER:
+         1. Find their card below
+         2. Change the image path, name, or roles
+    ============================================ -->
+    <section style="background: white;">
+        <div class="container">
+            <h2>Our Dedicated Members</h2>
+            <div class="members-grid">
+                
+                <!-- MEMBER 1: Nevin -->
+                <div class="member-card">
+                    <img src="images/nevin.jpg" alt="Nevin">
+                    <h3>Nevin</h3>
+                    <p class="member-role">Fundraising and Event Management, Editing and Design</p>
+                </div>
+
+                <!-- MEMBER 2: Risha -->
+                <div class="member-card">
+                    <img src="images/risha.jpg" alt="Risha">
+                    <h3>Risha</h3>
+                    <p class="member-role">Marketing, Editing and Design</p>
+                </div>
+
+                <!-- MEMBER 3: Nandana -->
+                <div class="member-card">
+                    <img src="images/nandana.jpg" alt="Nandana">
+                    <h3>Nandana</h3>
+                    <p class="member-role">Editing and Design, Finance, Event Management and Fundraising</p>
+                </div>
+
+                <!-- MEMBER 4: Sahithya -->
+                <div class="member-card">
+                    <img src="images/sahithya.jpg" alt="Sahithya">
+                    <h3>Sahithya</h3>
+                    <p class="member-role">Fundraising and Event Management</p>
+                </div>
+
+                <!-- MEMBER 5: Hansika -->
+                <div class="member-card">
+                    <img src="images/hansika.jpg" alt="Hansika">
+                    <h3>Hansika</h3>
+                    <p class="member-role">Editing and Designing, Communications</p>
+                </div>
+
+                <!-- MEMBER 6: Mihika -->
+                <div class="member-card">
+                    <img src="images\mihika.jpg" alt="Mihika">
+                    <h3>Mihika</h3>
+                    <p class="member-role">Fundraising and Event Management</p>
+                </div>
+
+                <!-- MEMBER 7: Charika -->
+                <div class="member-card">
+                    <img src="images/charika.jpg" alt="Charika">
+                    <h3>Charika</h3>
+                    <p class="member-role">Communications, Fundraising and Event Management</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         HOW YOU CAN HELP SECTION
+         ============================================
+         TO ADD A NEW WAY TO HELP:
+         1. Copy one entire <div class="help-card">...</div> block below
+         2. Paste it with the other help cards
+         3. Update the icon emoji, title (h3), and description
+         
+         TO REMOVE A HELP CARD:
+         1. Delete the entire <div class="help-card">...</div> block
+         
+         TO UPDATE A HELP CARD:
+         1. Find the card below
+         2. Change the emoji, title, or description
+    ============================================ -->
+    <section id="help" style="background: white;">
+        <div class="container">
+            <h2>How You Can Help</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 2rem;">There are many ways to make a difference in someone's life</p>
+            <div class="help-grid">
+                
+                <!-- HELP CARD 1: Volunteer -->
+                <div class="help-card">
+                    <div class="help-icon">🤝</div>
+                    <h3>Volunteer With Us</h3>
+                    <p>Join our team and dedicate your time to helping those in need. Whether it's organizing events, caring for animals, or supporting our community, your contribution matters.</p>
+                    <a href="#contact" class="btn">Learn More</a>
+                </div>
+
+                <!-- HELP CARD 2: Donate -->
+                <div class="help-card">
+                    <div class="help-icon">💝</div>
+                    <h3>Donate to Our Cause</h3>
+                    <p>Your generous donation helps us provide essential care, food, and shelter for animals in need. Every contribution, big or small, makes a real difference.</p>
+                    <a href="#contact" class="btn">Donate Now</a>
+                </div>
+
+                <!-- HELP CARD 3: Adopt -->
+                <div class="help-card">
+                    <div class="help-icon">🏠</div>
+                    <h3>Adopt a Pet</h3>
+                    <p>Give a loving home to an animal waiting for a second chance. Adoption not only saves lives but also brings joy and companionship into your family.</p>
+                    <a href="#adopt" class="btn">View Pets</a>
+                </div>
+
+                <!-- HELP CARD 4: Spread the Word -->
+                <div class="help-card">
+                    <div class="help-icon">📢</div>
+                    <h3>Spread the Word</h3>
+                    <p>Help us reach more people! Share our mission on social media, tell your friends and family about Sole2Soul, and help create awareness about animal welfare.</p>
+                    <a href="https://www.instagram.com/_.sole2soul" class="btn" target="_blank">Follow Us</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea rows="5" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p><strong>Founder:</strong> Xia Anwar</p>
+                    <p><strong>Phone:</strong> <a href="tel:+919311444465">+91 93114 44465</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:sole2soul@gmail.com">sole2soul@gmail.com</a></p>
+                    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/_.sole2soul" target="_blank">@_.sole2soul</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Sole2Soul. All rights reserved.</p>
+        <p>Enriching Lives, One Soul at a Time</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({behavior: 'smooth', block: 'start'});
+            });
+        });
+    </script>
+</body>
+</html>
